@@ -8,7 +8,7 @@ export default function Home() {
       <Navbar brandName="MyApp" />
       <main>
         <div className="flex justify-center items-center py-8">
-          <Greeting name="Harsh" />
+          <Greeting name="Harsh rajput" />
         </div>
         <Dashboard title="Welcome to Your Dashboard" />
       </main>
