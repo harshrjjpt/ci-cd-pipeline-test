@@ -29,17 +29,16 @@ jobs:
       - name: Build Next.js App
         run: npm run build
 
-      - name: Pull Vercel Project Settings
-        run: npx vercel pull --yes --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Build for Vercel
-        run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: vercel-build
-          path: .vercel/output
+          name: nextjs-build
+          path: |
+            .next
+            public
+            package.json
+            package-lock.json
+            next.config.ts
 
   deploy:
     runs-on: ubuntu-latest
@@ -52,11 +51,11 @@ jobs:
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
-          name: vercel-build
-          path: .vercel/output
+          name: nextjs-build
+          path: ./
 
       - name: Install Vercel CLI
         run: npm install -g vercel
 
-      - name: Deploy to Vercel (Prebuilt)
-        run: vercel deploy --prebuilt --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy to Vercel
+        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
