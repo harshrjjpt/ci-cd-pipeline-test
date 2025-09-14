@@ -29,8 +29,11 @@ jobs:
       - name: Build Next.js App
         run: npm run build
 
+      - name: Pull Vercel Project Settings
+        run: npx vercel pull --yes --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Build for Vercel
-        run: npx vercel build --prod
+        run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
