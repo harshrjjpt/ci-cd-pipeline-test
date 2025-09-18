@@ -55,7 +55,7 @@ export default function BuyFromTheBest() {
                 <div className='relative flex-shrink-0'>
                   <div className='relative'>
                     <Image
-                      src='/assets/ravinder-kumar.jpg'
+                      src='/assets/ravinder-kumar.JPG'
                       width={224}
                       height={224}
                       alt='Ravinder Kumar'
