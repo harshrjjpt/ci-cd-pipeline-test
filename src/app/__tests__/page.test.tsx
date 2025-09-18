@@ -4,7 +4,9 @@ import '@testing-library/jest-dom';
 import Home from '../page';
 
 // Mock the components
+
 jest.mock('../../components/BusCard', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return function MockBusCard({ bus }: any) {
     return <div data-testid={`bus-card-${bus.id}`}>{bus.name}</div>;
   };
