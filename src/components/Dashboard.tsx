@@ -1,4 +1,6 @@
 import React from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 
 interface StatCard {
   title: string
@@ -42,57 +44,63 @@ export default function Dashboard({
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {stats.map((stat, index) => (
-          <div 
+          <Card 
             key={index}
-            className="bg-white rounded-lg shadow-md p-6 border border-gray-200"
             data-testid={`stat-card-${index}`}
           >
-            <h3 className="text-sm font-medium text-gray-500 mb-2" data-testid={`stat-title-${index}`}>
-              {stat.title}
-            </h3>
-            <div className="flex items-baseline justify-between">
-              <p className="text-2xl font-semibold text-gray-900" data-testid={`stat-value-${index}`}>
-                {stat.value}
-              </p>
-              {stat.change && (
-                <span 
-                  className={`text-sm font-medium ${getChangeColor(stat.changeType)}`}
-                  data-testid={`stat-change-${index}`}
-                >
-                  {stat.change}
-                </span>
-              )}
-            </div>
-          </div>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground" data-testid={`stat-title-${index}`}>
+                {stat.title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-baseline justify-between">
+                <p className="text-2xl font-semibold" data-testid={`stat-value-${index}`}>
+                  {stat.value}
+                </p>
+                {stat.change && (
+                  <span 
+                    className={`text-sm font-medium ${getChangeColor(stat.changeType)}`}
+                    data-testid={`stat-change-${index}`}
+                  >
+                    {stat.change}
+                  </span>
+                )}
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
       
       {/* Quick Actions */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4" data-testid="quick-actions-title">
-          Quick Actions
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <button 
-            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
-            data-testid="action-button-1"
-          >
-            Add New User
-          </button>
-          <button 
-            className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors"
-            data-testid="action-button-2"
-          >
-            Generate Report
-          </button>
-          <button 
-            className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors"
-            data-testid="action-button-3"
-          >
-            View Analytics
-          </button>
-        </div>
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle data-testid="quick-actions-title">
+            Quick Actions
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Button 
+              data-testid="action-button-1"
+            >
+              Add New User
+            </Button>
+            <Button 
+              variant="secondary"
+              data-testid="action-button-2"
+            >
+              Generate Report
+            </Button>
+            <Button 
+              variant="outline"
+              data-testid="action-button-3"
+            >
+              View Analytics
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }
