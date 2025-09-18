@@ -32,8 +32,6 @@
     "next": "15.5.3",
     "npm": "^11.6.0",
     "react": "19.1.0",
-    "react-animated-cursor": "^2.11.2",
-    "react-csv-reader": "^4.0.0",
     "react-dom": "19.1.0",
     "react-fast-marquee": "^1.6.4",
     "react-parallax": "^3.5.1",
